@@ -79,3 +79,11 @@ git clone 仓库链接
 
 
 
+## 清空本地缓存的GitHub用户名和密码
+
+```shell
+git credential-manager reject github.com
+```
+
+
+
