@@ -71,7 +71,6 @@ git config user.email
 一旦有了访问令牌，就可以使用以下命令从 GitHub 拉取代码：
 
 ```
-bashCopy code
 git clone 仓库链接
 ```
 
