@@ -1,0 +1,157 @@
+.
+├─ .gitignore
+├─ README.md
+├─ appInfo.py
+├─ config.frz.ini
+├─ devTools
+│    └─ devRunScripts.py
+├─ lang
+│    └─ app.midc.json
+├─ libs
+│    └─ dev
+│           ├─ CMakeLists.txt
+│           ├─ dllmain.cpp
+│           ├─ library.cpp
+│           └─ library.h
+├─ log
+│    ├─ debug_1689059564.747192.log
+│    ├─ debug_1689063578.2317255.log
+│    ├─ debug_1689063634.951102.log
+│    ├─ debug_1689063710.3136992.log
+│    ├─ debug_1689063789.5433629.log
+├─ main.py
+├─ packages
+│    ├─ __init__.py
+│    ├─ __pycache__
+│    │    ├─ __init__.cpython-310.pyc
+│    │    ├─ config.cpython-310.pyc
+│    │    └─ resources.cpython-310.pyc
+│    ├─ common
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    ├─ __init__.cpython-310.pyc
+│    │    │    ├─ logged_user.cpython-310.pyc
+│    │    │    ├─ request.cpython-310.pyc
+│    │    │    └─ taskQueue.cpython-310.pyc
+│    │    ├─ i18n.py
+│    │    ├─ logged_user.py
+│    │    ├─ request.py
+│    │    └─ taskQueue.py
+│    ├─ config.py
+│    ├─ enums
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    ├─ __init__.cpython-310.pyc
+│    │    │    ├─ map_download.cpython-310.pyc
+│    │    │    ├─ osu.cpython-310.pyc
+│    │    │    └─ search_params_in_official.cpython-310.pyc
+│    │    ├─ map_download.py
+│    │    ├─ osu.py
+│    │    └─ search_params_in_official.py
+│    ├─ handlers
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    └─ __init__.cpython-310.pyc
+│    │    ├─ account
+│    │    │    ├─ __init__.py
+│    │    │    ├─ __pycache__
+│    │    │    └─ osu
+│    │    └─ map_download
+│    │           ├─ __init__.py
+│    │           └─ batch_download.py
+│    ├─ model
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    └─ __init__.cpython-310.pyc
+│    │    ├─ map_download_model
+│    │    │    ├─ __init__.py
+│    │    │    ├─ __pycache__
+│    │    │    └─ batch_download_model.py
+│    │    └─ osu_web
+│    │           ├─ __init__.py
+│    │           └─ user.py
+│    ├─ resources.py
+│    ├─ services
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    └─ __init__.cpython-310.pyc
+│    │    ├─ initialize_service
+│    │    │    ├─ __init__.py
+│    │    │    ├─ __pycache__
+│    │    │    ├─ i18n.py
+│    │    │    ├─ logger.py
+│    │    │    ├─ resource.py
+│    │    │    └─ view.py
+│    │    ├─ request
+│    │    │    ├─ __init__.py
+│    │    │    ├─ __pycache__
+│    │    │    └─ apis
+│    │    └─ task
+│    │           ├─ __init__.py
+│    │           ├─ __pycache__
+│    │           └─ taskQueue.py
+│    ├─ utils
+│    │    ├─ __init__.py
+│    │    ├─ __pycache__
+│    │    │    ├─ __init__.cpython-310.pyc
+│    │    │    └─ system.cpython-310.pyc
+│    │    └─ system.py
+│    └─ view
+│           ├─ __init__.py
+│           ├─ __pycache__
+│           │    ├─ __init__.cpython-310.pyc
+│           │    ├─ error.cpython-310.pyc
+│           │    ├─ loading.cpython-310.pyc
+│           │    └─ main_window_v2.cpython-310.pyc
+│           ├─ common
+│           │    ├─ __init__.py
+│           │    ├─ __pycache__
+│           │    └─ stylesheet_manager.py
+│           ├─ components
+│           │    ├─ __init__.py
+│           │    ├─ __pycache__
+│           │    ├─ avatar_widget.py
+│           │    ├─ splash_screen.py
+│           │    └─ titlebar.py
+│           ├─ error.py
+│           ├─ main_window_v2.py
+│           └─ pages
+│                  ├─ __init__.py
+│                  ├─ __pycache__
+│                  ├─ homepage.py
+│                  └─ map_download_page
+├─ resources
+│    ├─ __pycache__
+│    ├─ raw
+│    │    ├─ fonts
+│    │    │    ├─ Aller_Std_Bd.ttf
+│    │    │    ├─ Aller_Std_BdIt.ttf
+│    │    │    ├─ Aller_Std_It.ttf
+│    │    │    ├─ Aller_Std_Lt.ttf
+│    │    │    ├─ Aller_Std_LtIt.ttf
+│    │    │    ├─ Aller_Std_Rg.ttf
+│    │    │    ├─ Segoe Fluent Icons.ttf
+│    │    │    ├─ TorusNotched-Bold.ttf
+│    │    │    ├─ TorusNotched-Heavy.ttf
+│    │    │    ├─ TorusNotched-Light.ttf
+│    │    │    ├─ TorusNotched-Regular.ttf
+│    │    │    ├─ TorusNotched-SemiBold.ttf
+│    │    │    └─ TorusNotched-Thin.ttf
+│    │    ├─ images
+│    │    │    ├─ 000_homepage_bg.png
+│    │    │    ├─ homepage_bg.psd
+│    │    │    └─ osu-avatar-guest.png
+│    │    ├─ lang
+│    │    │    ├─ app.en_US.json
+│    │    │    └─ app.zh_CN.json
+│    │    ├─ osu_icon.png
+│    │    ├─ osu_icon_low_resolution.png
+│    │    └─ qss
+│    │           └─ dark
+│    └─ resources.qrc
+├─ test
+│    ├─ __init__.py
+│    ├─ color_theme.py
+│    ├─ libdlls.dll
+│    └─ login.py
+└─ test.py
