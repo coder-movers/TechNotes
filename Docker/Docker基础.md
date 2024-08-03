@@ -269,9 +269,17 @@ docker pull mysql:latest
 # 查看本地镜像(查看是否安装)
 docker images
 
-# 运行MySQL镜像(-p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。)(MYSQL_ROOT_PASSWORD=123456：设置 MySQL 服务 root 用户的密码。lower_case_table_names 数据库表名不区分大小写 ;--ulimit nofile=65536:65536 接触最大连接数限制)
+# 运行MySQL镜像(-p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。)(MYSQL_ROOT_PASSWORD=root：设置 MySQL 服务 root 用户的密码。lower_case_table_names 数据库表名不区分大小写 ;--ulimit nofile=65536:65536 接触最大连接数限制)
 #创建一个名为mysql-test的容器并运行
-docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql --lower_case_table_names=1 --ulimit nofile=65536:65536
+docker run -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --ulimit nofile=65536:65536 mysql --lower_case_table_names=1
+
+# 也可以选择将mysql文件挂载到宿主机指定目录
+docker run -itd --name mysql \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=root \
+  --ulimit nofile=65536:65536 \
+  -v /path/to/your/mysql/data:/var/lib/mysql \
+  mysql --lower_case_table_names=1
 
 # 查看容器启动情况
 docker ps
@@ -288,14 +296,17 @@ docker exec -it mysql bash
 # 进入mysql
 mysql -u root -p
 
-# 配置mysql 1.远程连接授权(如下命令对所有IP进行root账户授权)(mysql命令必须以分号结束)
+# 配置mysql 1.远程连接授权(如下命令对所有IP进行root账户授权)(mysql命令必  须以分号结束)
 GRANT ALL ON *.* TO 'root'@'%';
 
 # 配置mysql 2.修改密码过期策略（PASSWORD EXPIRE NEVER：密码不过期）
 ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
 
-# 配置mysql 3.更改root密码
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456'; 
+# 配置mysql 3.mysql8.0版本之前修改密码更改root密码
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+
+# mysql8.0版本之后修改密码
+ALTER USER 'root'@'%' IDENTIFIED WITH caching_sha2_password BY '123456';
 
 # 配置mysql 4.刷新权限
 flush privileges;
