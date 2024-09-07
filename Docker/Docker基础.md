@@ -1038,3 +1038,23 @@ sudo rm -rf  mongodb-27017.sock
 # 重启容器
 docker restart 容器id
 ```
+
+
+
+### docker拉取postgresql
+
+```shell
+# 拉取镜像
+docker pull postgres
+
+# 启动并运行
+# 设置root默认密码和设置时区
+docker run --name postgres -e POSTGRES_PASSWORD=123456 -e TZ=Asia/Shanghai -p 5432:5432 -d postgres
+
+# 进入容器
+docker exec -it postgres psql -U postgres
+
+# 创建数据表
+CREATE DATABASE db_test;
+```
+
