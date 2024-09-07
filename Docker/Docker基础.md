@@ -142,6 +142,24 @@ docker container prune
 
 
 
+### docker卸载
+
+1. 移除所有容器和镜像
+
+   ```shell
+   docker container stop $(docker container ls -aq)
+   docker system prune -a --volumes
+   ```
+
+2. 卸载docker
+
+   ```shell
+   sudo apt purge docker-ce
+   sudo apt autoremove
+   ```
+
+   
+
 ### docker容器设置开机自启动
 
 - 创建容器时
@@ -165,7 +183,7 @@ docker container prune
 
 
 
-### docker查看某个容器日志
+### docker查看日志
 
 命令格式：(OPTIONS为可选参数，可不填；CONTAINER是容器id或容器名)
 
@@ -187,25 +205,31 @@ docker logs [OPTIONS] CONTAINER
 
 例子：(容器Id:`dd57c98422a3`)
 
-1. 查看指定时间后的日志，只显示最后100行：
+1. 查看最近的100行
+
+   ```shell
+   docker logs -ft --tail 100 mycontainer
+   ```
+
+2. 查看指定时间后的日志，只显示最后100行：
 
    ```shell
    docker logs -f -t --since="2021-08-05" --tail=100 dd57c98422a3
    ```
 
-2. 查看最近30分钟的日志:
+3. 查看最近30分钟的日志:
 
    ```shell
    docker logs --since 30m dd57c98422a3
    ```
 
-3. 查看某时间之后的日志：
+4. 查看某时间之后的日志：
 
    ```shell
    docker logs -t --since="2021-08-05T08:23:37" dd57c98422a3
    ```
 
-4. 查看某时间段日志：
+5. 查看某时间段日志：
 
    ```shell
    docker logs -t --since="2021-08-05T08:23:37" --until "2018-02-09T12:23:37" dd57c98422a3
@@ -482,6 +506,19 @@ flush privileges;
 
    
 
+
+**docker权限错误**
+
+> 权限校验错误，命令`mysql -u root -p`输入密码后无法登录
+
+解决办法：降低mysql镜像版本
+
+```shell
+docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -v /mysql/data:/var/lib/mysql mysql:8.0
+```
+
+
+
 ### docker重启MySQL、Oracle服务
 
 ```properties
@@ -628,8 +665,10 @@ exit
    docker run -itd --name redis -p 6379:6379 redis --requirepass "123456"
    ```
 
-   > 为现有redis设置密码或修改密码
+   > **注意：**下面在容器内修改密码后，在容器重启后失效，密码会还原回启动容器时的密码
    >
+   > 为现有redis设置密码或修改密码
+   > 
    > ```shell
    > # ①进入redis容器
    > docker exec -it redis bash
@@ -637,19 +676,16 @@ exit
    > # ②调用命令行
    > redis-cli
    > 
-   > # ③查看现有redis密码
-   > config get requirepass
-   > 
-   > # ④修改redis密码
-   > config set requirepass "123456"
-   > ```
-   >
-   > 如出现`(error) NOAUTH Authentication required.`
-   >
-   > ```shell
-   > # 验证密码
+   > # ③验证原密码
    > auth 原密码
+   > 
+   > # ④查看现有redis密码
+   >config get requirepass
+   > 
+   ># ⑤修改redis密码
+   > config set requirepass "aa123456"
    > ```
+   > 
 
 
 

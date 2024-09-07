@@ -86,3 +86,21 @@ git credential-manager reject github.com
 
 
 
+### 创建新分支
+
+- 方法一
+  1. 打开要创建分支的GitHub仓库页面。
+  2. 点击仓库顶部的“Branch”下拉菜单按钮。
+  3. 在下拉菜单中输入您希望创建的新分支的名称,然后按回车键。
+  4. GitHub会自动基于当前仓库的主分支(通常是master)创建一个新分支。
+
+
+
+- 方法二
+  1. 在本地克隆仓库后,使用 `git branch <branchname>` 命令创建新分支。
+  2. 使用 `git checkout <branchname>` 切换到新分支。
+  3. 在新分支上进行代码修改和提交。
+  4. 使用 `git push origin <branchname>` 将新分支推送到GitHub远程仓库。
+
+
+
